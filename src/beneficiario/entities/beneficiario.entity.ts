@@ -16,7 +16,7 @@ export class Beneficiario extends AbstractEntity {
   nome: string;
 
   @Column()
-  dataNascimento: number;
+  dataNascimento: string;
 
   @Column()
   sexo: string;
@@ -25,7 +25,7 @@ export class Beneficiario extends AbstractEntity {
   cidade: string;
 
   @Column()
-  UF: string;
+  uf: string;
 
   @Column()
   endereco: string;
@@ -37,12 +37,11 @@ export class Beneficiario extends AbstractEntity {
   nomeMae: string;
 
   @Column()
-  dataEntrada: number;
-
-  @OneToOne( () => MetodoTerapeutico )
+  dataEntrada: string;
+}
+  /*@OneToOne( () => MetodoTerapeutico )
   @JoinColumn(({ name: "metodoTerapeuticoId" }))
   MetodoTerapeutico: MetodoTerapeutico
 
   @OneToMany(()=> Cid, (cid) => cid.beneficiario)
-  Cid: Cid
-}
+  Cid: Cid*/ 

@@ -18,3 +18,11 @@ describe('BeneficiarioController', () => {
     expect(controller).toBeDefined();
   });
 });
+function beforeEach(arg0: () => Promise<void>) {
+  throw new Error('Function not implemented.');
+}
+
+function expect(controller: BeneficiarioController) {
+  throw new Error('Function not implemented.');
+}
+

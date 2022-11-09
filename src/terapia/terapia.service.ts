@@ -7,7 +7,7 @@ import { Terapia } from './entities/terapia.entity';
 @Injectable()
 export class TerapiaService extends GenericService<Terapia> {
   constructor(
-    @InjectRepository(TerapiaService) repository: Repository<Terapia>,
+    @InjectRepository(Terapia) repository: Repository<Terapia>,
   ) {
     super(repository);
   }
