@@ -16,25 +16,22 @@ export class Beneficiario extends AbstractEntity {
   nome: string;
 
   @Column()
-  dataNascimento: string;
+  idade: number;
 
   @Column()
   sexo: string;
 
   @Column()
-  cidade: string;
-
-  @Column()
   uf: string;
 
   @Column()
-  endereco: string;
+  cidade: string;
+  
+  @Column()
+  cep: string;
 
   @Column()
-  nomePai: string;
-
-  @Column()
-  nomeMae: string;
+  judicializado: boolean;
 
   @Column()
   dataEntrada: string;

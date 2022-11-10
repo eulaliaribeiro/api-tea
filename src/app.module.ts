@@ -16,6 +16,9 @@ import { MetodoTerapeutico } from './metodo-terapeutico/entities/metodo-terapeut
 import { Terapia } from './terapia/entities/terapia.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { MedicoAutorizadorModule } from './medico-autorizador/medico-autorizador.module';
+import { SolicitacaoModule } from './solicitacao/solicitacao.module';
+import { TerapiaSolicitadaModule } from './terapia-solicitada/terapia-solicitada.module';
 
 @Module({
   imports: [
@@ -38,6 +41,9 @@ import { UsersModule } from './users/users.module';
     TerapiaModule,
     AuthModule,
     UsersModule,
+    MedicoAutorizadorModule,
+    SolicitacaoModule,
+    TerapiaSolicitadaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

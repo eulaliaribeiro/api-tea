@@ -3,21 +3,24 @@ import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Terapia extends AbstractEntity {
+export class TerapiaSolicitada extends AbstractEntity {
   constructor() {
     super();
   }
 
   @PrimaryGeneratedColumn()
-  TerapiaId: string;
+  terapiaSolicitadaId: string;
 
   @Column()
-  metodoTerapeuticoId: string;
+  terapiaId: string;
 
   @Column()
-  nome: string;
+  medicoAutorizadorId: string;
 
   @Column()
-  descricao: string;
+  qtdSessoes: number;
+
+  @Column()
+  dataAutorizacao: Date;
 
 }
