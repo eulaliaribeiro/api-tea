@@ -1,7 +1,8 @@
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 
-import { Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
+@Entity()
 export class MetodoTerapeutico extends AbstractEntity {
   constructor() {
     super();
