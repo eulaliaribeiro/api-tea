@@ -1,14 +1,16 @@
-import { Cid } from 'src/cid/entities/cid.entity';
+import { Endereco } from "src/endereco/entities/endereco.entity";
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
-import { MetodoTerapeutico } from 'src/metodo-terapeutico/entities/metodo-terapeutico.entity';
 
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+//import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
+//import { Responsavel } from "src/responsavel/entities/responsavel.entity";
 
 @Entity()
 export class Beneficiario extends AbstractEntity {
   constructor() {
     super();
   }
+
   @Column()
   cid: string;
 
@@ -22,23 +24,25 @@ export class Beneficiario extends AbstractEntity {
   sexo: string;
 
   @Column()
-  uf: string;
-
-  @Column()
-  cidade: string;
-  
-  @Column()
-  cep: string;
-
-  @Column()
   judicializado: boolean;
 
   @Column()
   dataEntrada: string;
-}
-  /*@OneToOne( () => MetodoTerapeutico )
-  @JoinColumn(({ name: "metodoTerapeuticoId" }))
-  MetodoTerapeutico: MetodoTerapeutico
 
-  @OneToMany(()=> Cid, (cid) => cid.beneficiario)
-  Cid: Cid*/ 
+  @OneToOne( () => Endereco, {cascade:true})
+  @JoinColumn(({ name: "enderecoId" }))
+  endereco: Endereco
+
+  /*
+  @OneToOne( () => Endereco, {cascade:true})
+  @JoinColumn(({ name: "enderecoId" }))
+  endereco: Endereco
+
+  @ManyToOne(() => Responsavel, (responsavel)=> responsavel.beneficiarios)
+  @JoinColumn(({ name: "responsavelId" }))
+  responsavel: Responsavel
+  
+  @OneToMany(()=> Solicitacao, (solicitacao) => solicitacao.beneficiario)
+  solicitacoes: Solicitacao[]
+  */
+}

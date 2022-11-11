@@ -19,6 +19,9 @@ import { UsersModule } from './users/users.module';
 import { MedicoAutorizadorModule } from './medico-autorizador/medico-autorizador.module';
 import { SolicitacaoModule } from './solicitacao/solicitacao.module';
 import { TerapiaSolicitadaModule } from './terapia-solicitada/terapia-solicitada.module';
+import { EnderecoModule } from './endereco/endereco.module';
+import { ResponsavelBeneficiarioModule } from './responsavel-beneficiario/responsavel-beneficiario.module';
+import { ResponsavelModule } from './responsavel/responsavel.module';
 
 @Module({
   imports: [
@@ -44,6 +47,9 @@ import { TerapiaSolicitadaModule } from './terapia-solicitada/terapia-solicitada
     MedicoAutorizadorModule,
     SolicitacaoModule,
     TerapiaSolicitadaModule,
+    EnderecoModule,
+    ResponsavelBeneficiarioModule,
+    ResponsavelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

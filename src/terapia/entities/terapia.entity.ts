@@ -20,4 +20,13 @@ export class Terapia extends AbstractEntity {
   @Column()
   descricao: string;
 
+  /*
+  @OneToMany(()=> TerapiaSolicitada, (terapiaSolicitada) => terapiaSolicitada.terapia)
+  terapiasSolicitadas: TerapiaSolicitada[]
+
+  @ManyToOne(() => MetodoTerapeutico, (metodoTerapeutico)=> metodoTerapeutico.terapias)
+  @JoinColumn(({ name: "metodoTerapeuticoId" }))
+  metodoTerapeutico: MetodoTerapeutico
+  */
+
 }

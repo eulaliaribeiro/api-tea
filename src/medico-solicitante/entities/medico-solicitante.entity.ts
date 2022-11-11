@@ -16,4 +16,9 @@ export class MedicoSolicitante extends AbstractEntity {
 
   @Column()
   especialidade: string;
+
+  /*
+  @OneToMany(()=> Solicitacao, (solicitacao) => solicitacao.medicoSolicitante)
+  solicitacoes: Solicitacao[]
+  */
 }

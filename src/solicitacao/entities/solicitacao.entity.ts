@@ -20,4 +20,16 @@ export class Solicitacao extends AbstractEntity {
   @Column()
   dataSolicitacao: Date;
 
+  /*
+  @ManyToOne(() => Beneficiario, (beneficiario)=> beneficiario.solicitacoes)
+  @JoinColumn(({ name: "beneficiarioId" }))
+  beneficiario: Beneficiario
+
+  @ManyToOne(() => MedicoSolicitante, (medicoSolicitante)=> medicoSolicitante.solicitacoes)
+  @JoinColumn(({ name: "medicoSolicitanteId" }))
+  medicoSolicitante: MedicoSolicitante
+
+  @OneToMany(()=> TerapiaSolicitada, (terapiaSolicitada) => terapiaSolicitada.solicitacao)
+  terapiasSolicitadas: TerapiaSolicitada[]
+  */
 }
