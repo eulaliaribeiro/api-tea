@@ -1,6 +1,7 @@
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
+import { TerapiaSolicitada } from 'src/terapia-solicitada/entities/terapia-solicitada.entity';
 
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class MedicoAutorizador extends AbstractEntity {
@@ -17,8 +18,7 @@ export class MedicoAutorizador extends AbstractEntity {
   @Column()
   especialidade: string;
 
-  /*
   @OneToMany(()=> TerapiaSolicitada, (terapiaSolicitada) => terapiaSolicitada.medicoAutorizador)
   terapiasSolicitadas: TerapiaSolicitada[]
-  */
+  
 }

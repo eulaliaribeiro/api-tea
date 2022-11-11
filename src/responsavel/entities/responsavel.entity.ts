@@ -15,9 +15,7 @@ export class Responsavel extends AbstractEntity {
   @Column()
   parentesco: string;
 
-  /*
   @OneToMany(()=> Beneficiario, (beneficiario) => beneficiario.responsavel)
   beneficiarios: Beneficiario[]
-  */
 
 }

@@ -1,6 +1,7 @@
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
+import { Terapia } from 'src/terapia/entities/terapia.entity';
 
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity()
 export class MetodoTerapeutico extends AbstractEntity {
@@ -16,8 +17,7 @@ export class MetodoTerapeutico extends AbstractEntity {
   @Column()
   descricao: string;
 
-  /*
   @OneToMany(()=> Terapia, (terapia) => terapia.metodoTerapeutico)
-  terapias: Terapias[]
-  */
+  terapias: Terapia[]
+  
 }
