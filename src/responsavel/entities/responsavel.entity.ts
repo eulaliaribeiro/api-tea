@@ -1,7 +1,7 @@
 import { Beneficiario } from 'src/beneficiario/entities/beneficiario.entity';
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 
-import { Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Responsavel extends AbstractEntity {

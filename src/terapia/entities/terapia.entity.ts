@@ -10,12 +10,6 @@ export class Terapia extends AbstractEntity {
     super();
   }
 
-  @PrimaryGeneratedColumn()
-  TerapiaId: string;
-
-  @Column()
-  metodoTerapeuticoId: string;
-
   @Column()
   nome: string;
 

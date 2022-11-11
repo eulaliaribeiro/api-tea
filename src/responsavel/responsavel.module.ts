@@ -9,4 +9,4 @@ import { Responsavel } from './entities/responsavel.entity';
   controllers: [ResponsavelController],
   providers: [ResponsavelService],
 })
-export class ResponsaveloModule {}
+export class ResponsavelModule {}

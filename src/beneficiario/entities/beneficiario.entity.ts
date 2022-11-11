@@ -3,7 +3,7 @@ import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 import { Responsavel } from "src/responsavel/entities/responsavel.entity";
 import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
 
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 //import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
 //import { Responsavel } from "src/responsavel/entities/responsavel.entity";
 
@@ -12,6 +12,9 @@ export class Beneficiario extends AbstractEntity {
   constructor() {
     super();
   }
+
+  @PrimaryGeneratedColumn()
+  beneficarioId: string;
 
   @Column()
   cid: string;

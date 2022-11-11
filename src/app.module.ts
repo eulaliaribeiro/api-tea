@@ -5,12 +5,10 @@ import { BeneficiarioModule } from './beneficiario/beneficiario.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GenericModule } from './generic/generic.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { CidModule } from './cid/cid.module';
 import { MetodoTerapeuticoModule } from './metodo-terapeutico/metodo-terapeutico.module';
 import { TerapiaModule } from './terapia/terapia.module';
 import { MedicoSolicitanteModule } from './medico-solicitante/medico-solicitante.module';
 import { Beneficiario } from './beneficiario/entities/beneficiario.entity';
-import { Cid } from './cid/entities/cid.entity';
 import { MedicoSolicitante } from './medico-solicitante/entities/medico-solicitante.entity';
 import { MetodoTerapeutico } from './metodo-terapeutico/entities/metodo-terapeutico.entity';
 import { Terapia } from './terapia/entities/terapia.entity';
@@ -20,8 +18,12 @@ import { MedicoAutorizadorModule } from './medico-autorizador/medico-autorizador
 import { SolicitacaoModule } from './solicitacao/solicitacao.module';
 import { TerapiaSolicitadaModule } from './terapia-solicitada/terapia-solicitada.module';
 import { EnderecoModule } from './endereco/endereco.module';
-import { ResponsavelBeneficiarioModule } from './responsavel-beneficiario/responsavel-beneficiario.module';
 import { ResponsavelModule } from './responsavel/responsavel.module';
+import { TerapiaSolicitada } from './terapia-solicitada/entities/terapia-solicitada.entity';
+import { Responsavel } from './responsavel/entities/responsavel.entity';
+import { Endereco } from './endereco/entities/endereco.entity';
+import { MedicoAutorizador } from './medico-autorizador/entities/medico-autorizador.entity';
+import { Solicitacao } from './solicitacao/entities/solicitacao.entity';
 
 @Module({
   imports: [
@@ -29,16 +31,15 @@ import { ResponsavelModule } from './responsavel/responsavel.module';
           type: 'postgres',
           database: 'tea_db',
           username: 'postgres',
-          password: '1625oaMJ@',
+          password: 'postgres',
           host: 'localhost',
           port: 5432,
-          entities: [Beneficiario, Cid, MedicoSolicitante, MetodoTerapeutico, Terapia],
+          entities: [Beneficiario, MedicoSolicitante, MetodoTerapeutico, Terapia, TerapiaSolicitada, Responsavel, Endereco, MedicoAutorizador, Solicitacao],
           synchronize: true,
           logging: true,
       }),
     BeneficiarioModule,
     GenericModule,
-    CidModule,
     MedicoSolicitanteModule,
     MetodoTerapeuticoModule,
     TerapiaModule,
@@ -48,7 +49,6 @@ import { ResponsavelModule } from './responsavel/responsavel.module';
     SolicitacaoModule,
     TerapiaSolicitadaModule,
     EnderecoModule,
-    ResponsavelBeneficiarioModule,
     ResponsavelModule,
   ],
   controllers: [AppController],

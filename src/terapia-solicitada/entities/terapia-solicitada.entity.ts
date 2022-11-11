@@ -11,15 +11,6 @@ export class TerapiaSolicitada extends AbstractEntity {
     super();
   }
 
-  @PrimaryGeneratedColumn()
-  terapiaSolicitadaId: string;
-
-  @Column()
-  terapiaId: string;
-
-  @Column()
-  medicoAutorizadorId: string;
-
   @Column()
   qtdSessoes: number;
 

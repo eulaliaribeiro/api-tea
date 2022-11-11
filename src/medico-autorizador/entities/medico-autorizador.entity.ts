@@ -10,7 +10,7 @@ export class MedicoAutorizador extends AbstractEntity {
   }
 
   @PrimaryGeneratedColumn()
-  medicoAutorizadorID: string;
+  medicoAutorizadorId: string;
 
   @Column()
   nome: string;

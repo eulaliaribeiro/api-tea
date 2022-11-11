@@ -10,10 +10,7 @@ export class Endereco extends AbstractEntity {
   }
 
   @PrimaryGeneratedColumn()
-  EnderecoId: string;
-
-  @Column()
-  beneficiarioId: string;
+  enderecoId: string;
 
   @Column()
   uf: string;

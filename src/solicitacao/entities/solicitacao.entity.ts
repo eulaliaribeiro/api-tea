@@ -11,15 +11,6 @@ export class Solicitacao extends AbstractEntity {
     super();
   }
 
-  @PrimaryGeneratedColumn()
-  SolicitacaoId: string;
-
-  @Column()
-  beneficiarioId: string;
-
-  @Column()
-  medicoSolicitanteId: string;
-
   @Column()
   dataSolicitacao: Date;
 

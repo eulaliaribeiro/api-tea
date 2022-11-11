@@ -8,11 +8,9 @@ export class MetodoTerapeutico extends AbstractEntity {
   constructor() {
     super();
   }
-  @Column()
-  metodoTerapeuticoId: string;
 
   @Column()
-  medicoSolicitanteId: string;
+  nome: string;
 
   @Column()
   descricao: string;
