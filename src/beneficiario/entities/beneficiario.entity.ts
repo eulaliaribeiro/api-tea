@@ -1,11 +1,8 @@
 import { Endereco } from "src/endereco/entities/endereco.entity";
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
-import { Responsavel } from "src/responsavel/entities/responsavel.entity";
 import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
 
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-//import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
-//import { Responsavel } from "src/responsavel/entities/responsavel.entity";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 
 @Entity()
 export class Beneficiario extends AbstractEntity {
@@ -13,8 +10,8 @@ export class Beneficiario extends AbstractEntity {
     super();
   }
 
-  @PrimaryGeneratedColumn()
-  beneficarioId: string;
+  @Column()
+  beneficarioCarteira: string;
 
   @Column()
   cid: string;
@@ -29,18 +26,15 @@ export class Beneficiario extends AbstractEntity {
   sexo: string;
 
   @Column()
-  judicializado: boolean;
+  responsavelCarteira: string;
 
   @Column()
   dataEntrada: string;
-
+  
   @OneToOne( () => Endereco, {cascade:true})
-  @JoinColumn(({ name: "enderecoId" }))
+  //@JoinColumn(({ name: "enderecoId" }))
+  @JoinColumn()
   endereco: Endereco
-
-  @ManyToOne(() => Responsavel, (responsavel)=> responsavel.beneficiarios)
-  @JoinColumn(({ name: "responsavelId" }))
-  responsavel: Responsavel
   
   @OneToMany(()=> Solicitacao, (solicitacao) => solicitacao.beneficiario)
   solicitacoes: Solicitacao[]

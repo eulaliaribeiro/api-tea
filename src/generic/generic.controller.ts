@@ -37,6 +37,7 @@ export class GenericController<TEA extends AbstractEntity> {
     }
     return beneficiario;
   }
+  
   @Post()
   async create(@Body() createDto: any, @Res() response: Response) {
     const entity = await this.service.create(createDto);

@@ -1,9 +1,6 @@
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
-import { MedicoAutorizador } from 'src/medico-autorizador/entities/medico-autorizador.entity';
-import { Solicitacao } from 'src/solicitacao/entities/solicitacao.entity';
-import { Terapia } from 'src/terapia/entities/terapia.entity';
 
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity,  } from 'typeorm';
 
 @Entity()
 export class TerapiaSolicitada extends AbstractEntity {
@@ -12,21 +9,12 @@ export class TerapiaSolicitada extends AbstractEntity {
   }
 
   @Column()
-  qtdSessoes: number;
+  nome: string;
 
   @Column()
-  dataAutorizacao: Date;
-  
-  @ManyToOne(() => Solicitacao, (solicitacao)=> solicitacao.terapiasSolicitadas)
-  @JoinColumn(({ name: "solicitacaoId" }))
-  solicitacao: Solicitacao
+  metodoTerapeutico: string;
 
-  @ManyToOne(() => MedicoAutorizador, (medicoAutorizador)=> medicoAutorizador.terapiasSolicitadas)
-  @JoinColumn(({ name: "medicoAutorizadorId" }))
-  medicoAutorizador: MedicoAutorizador
-
-  @ManyToOne(() => Terapia, (terapia)=> terapia.terapiasSolicitadas)
-  @JoinColumn(({ name: "terapiaId" }))
-  terapia: Terapia
+  @Column()
+  qtdSessoes: number;
 
 }
