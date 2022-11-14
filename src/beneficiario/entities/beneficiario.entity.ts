@@ -11,7 +11,7 @@ export class Beneficiario extends AbstractEntity {
   }
 
   @Column()
-  beneficarioCarteira: string;
+  beneficiarioCarteira: string;
 
   @Column()
   cid: string;
@@ -31,7 +31,7 @@ export class Beneficiario extends AbstractEntity {
   @Column()
   dataEntrada: string;
   
-  @OneToOne( () => Endereco, {cascade:true})
+  @OneToOne( () => Endereco, {cascade: ["insert", "update"]})
   //@JoinColumn(({ name: "enderecoId" }))
   @JoinColumn()
   endereco: Endereco
