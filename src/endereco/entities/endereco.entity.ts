@@ -1,7 +1,7 @@
 import { Beneficiario } from 'src/beneficiario/entities/beneficiario.entity';
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, Relation } from 'typeorm';
 
 @Entity()
 export class Endereco extends AbstractEntity {
@@ -30,9 +30,10 @@ export class Endereco extends AbstractEntity {
   @Column()
   cep: string;
   
-  @OneToOne( () => Beneficiario, {cascade:true})
+  @OneToOne( () => Beneficiario, (beneficiario) => beneficiario.endereco)
   //@JoinColumn(({ name: "beneficiarioId" }))
   @JoinColumn()
   beneficiario: Beneficiario
+
   
 }

@@ -2,7 +2,7 @@ import { Endereco } from "src/endereco/entities/endereco.entity";
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
 
-import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, Relation } from 'typeorm';
 
 @Entity()
 export class Beneficiario extends AbstractEntity {
@@ -31,10 +31,11 @@ export class Beneficiario extends AbstractEntity {
   @Column()
   dataEntrada: string;
   
-  @OneToOne( () => Endereco, {cascade: ["insert", "update"]})
+  @OneToOne( () => Endereco, (endereco) => endereco.beneficiario, {cascade: ["insert", "update"]})
   //@JoinColumn(({ name: "enderecoId" }))
   @JoinColumn()
   endereco: Endereco
+
   
   @OneToMany(()=> Solicitacao, (solicitacao) => solicitacao.beneficiario)
   solicitacoes: Solicitacao[]
