@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Response } from 'express';
-import { IndexTodoSwagger } from 'src/swagger/index-tea.swagger';
+import { IndexTeaSwagger } from 'src/swagger/index-tea.swagger';
 
 import { AbstractEntity } from './entities/abstract-entity';
 import { GenericService } from './generic.service';
@@ -24,7 +24,7 @@ export class GenericController<TEA extends AbstractEntity> {
   @Get()
   @ApiOperation({ summary: 'Listar todos dados'})
   @ApiResponse({ status: 200, description: 'Lista de todos os dados retornado com sucesso!',
-    type: IndexTodoSwagger})
+    type: IndexTeaSwagger})
   async findAll() {
     return this.service.findAll();
   }
@@ -32,7 +32,7 @@ export class GenericController<TEA extends AbstractEntity> {
   @Get(':id')
   @ApiOperation({ summary: 'Listar o dado pelo id'})
   @ApiResponse({ status: 200, description: 'Dado retornado com sucesso!'})
-  @ApiResponse({ status: 404, description: 'Dado não foi encontrado', type: IndexTodoSwagger})
+  @ApiResponse({ status: 404, description: 'Dado não foi encontrado', type: IndexTeaSwagger})
   async findOneByOrFail(@Param('id') id: string) {
     let beneficiario;
     try {
@@ -49,7 +49,7 @@ export class GenericController<TEA extends AbstractEntity> {
   @Post()
   @ApiOperation({ summary: 'Cadastrar um novo dado'})
   @ApiResponse({ status: 201, description: 'Novo dado criado com sucesso!'})
-  @ApiResponse({ status: 400, description: 'Parâmetros inválidos', type: IndexTodoSwagger})
+  @ApiResponse({ status: 400, description: 'Parâmetros inválidos', type: IndexTeaSwagger})
   async create(@Body() createDto: any, @Res() response: Response) {
     const entity = await this.service.create(createDto);
 
@@ -62,7 +62,7 @@ export class GenericController<TEA extends AbstractEntity> {
   @Patch(':id')
   @ApiOperation({ summary: 'Atualizar o dado pelo id'})
   @ApiResponse({ status: 200, description: 'Dado atualizado com sucesso!'})
-  @ApiResponse({ status: 404, description: 'Dado não encontrado', type: IndexTodoSwagger})
+  @ApiResponse({ status: 404, description: 'Dado não encontrado', type: IndexTeaSwagger})
   async update(@Param('id') id: string, @Body() updateDto: any) {
     return await this.service.update(id, updateDto);
   }
@@ -70,7 +70,7 @@ export class GenericController<TEA extends AbstractEntity> {
   @Delete(':id')
   @ApiOperation({ summary: 'Deletar o dado pelo id'})
   @ApiResponse({ status: 204, description: 'Dado removido com sucesso!'})
-  @ApiResponse({ status: 404, description: 'Dado não encontrado', type: IndexTodoSwagger})
+  @ApiResponse({ status: 404, description: 'Dado não encontrado', type: IndexTeaSwagger})
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', new ParseUUIDPipe()) id: string): Promise<void> {
     await this.service.remove(id);

@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { ApiProperty } from '@nestjs/swagger';
 
 export type User = any;
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
+  @ApiProperty()
+  private users = [
     {
       userId: 1,
       username: 'Osvaldo',
