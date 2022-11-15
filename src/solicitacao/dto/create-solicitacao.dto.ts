@@ -1,12 +1,13 @@
-import {IsAlpha, IsDate, IsNotEmpty, IsNumber, IsNumberString, IsOptional, IsPositive, IsString, Length, length, max, ValidateNested } from 'class-validator'
+import { IsDate, IsNotEmpty, IsString, Length } from 'class-validator'
 import {Transform, Type} from'class-transformer';
-import { TerapiaSolicitada } from 'src/terapia-solicitada/entities/terapia-solicitada.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSolicitacaoDto {
 
 @IsDate({message:"Dados invalida"})
 @IsNotEmpty({message:"Data da solicitacao obrigatória"})
 @Type(()=>Date)
+@ApiProperty()
 datasolicitacao:Date;
 
 
@@ -14,6 +15,7 @@ datasolicitacao:Date;
 @Length(0,60,{message:"O tamanho deve ser 0 e 60"})
 @IsString({message:"Deve ser String"})
 @Transform(({ value }) => value.toUpperCase())
-medicosolicitante: String;
+@ApiProperty()
+medicosolicitante: string;
 
 }

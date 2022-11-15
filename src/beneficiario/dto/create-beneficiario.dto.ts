@@ -2,6 +2,7 @@ import {IsDate, IsInt, IsNotEmpty, IsNumberString, IsPositive, IsString, Length,
 import { Transform, Type } from 'class-transformer';
 import { Endereco } from "src/endereco/entities/endereco.entity";
 import { ApiProperty } from '@nestjs/swagger';
+import { IndexEnderecoSwagger } from 'src/swagger/index-endereco.swagger';
 
 export class CreateBeneficiarioDto {
 
@@ -48,7 +49,7 @@ export class CreateBeneficiarioDto {
     sexo: string;
 
     @ValidateNested({message:"Tipo informado errado"})
-    @ApiProperty()
+    @ApiProperty({ type: IndexEnderecoSwagger, isArray: true })
     endereco: Endereco;
 
 }
