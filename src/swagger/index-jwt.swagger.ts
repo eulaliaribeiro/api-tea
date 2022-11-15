@@ -1,10 +1,14 @@
 
 import { ApiProperty } from "@nestjs/swagger";
+import { ValidateNested } from "class-validator";
+import { IndexAuthSwagger } from "./index-auth.swagger";
 
 export class IndexJwtSwagger {
     
+    @ValidateNested({message:"Token para validação do usuario"})
     @ApiProperty({
-        description: 'token gerado para validação do usuario'
+        type: IndexAuthSwagger, isArray: true, 
+        description: 'Autorizado o token, resultado o usuario'
     })
-    access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkV1bGFsaWEiLCJzdWIiOjIsImlhdCI6MTY2ODUzNjM0MSwiZXhwIjoxNjY4NTM2OTQxfQ.s3u-YJzIirOlUlRuzHT32aZQPd3vJTxgyJvtKaOlI2Y"
+    access_token: string
 }
