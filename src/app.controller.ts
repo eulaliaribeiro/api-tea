@@ -17,14 +17,15 @@ export class AppController {
 
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
-  @ApiOperation({ summary: 'local'})
+  @ApiOperation({ summary: 'Login de usuário'})
   @ApiResponse({ status: 200, description: 'Login feito com sucesso!', type: IndexAuthSwagger})
   async login(@Request() req) {
     return this.authService.login(req.user);
   }
+
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'jwt'})
-  @ApiResponse({ status: 200, description: 'Autenticado com sucesso!', type: IndexJwtSwagger})
+  @ApiOperation({ summary: 'Validação do usuário'})
+  @ApiResponse({ status: 200, description: 'Validado com sucesso!', type: IndexJwtSwagger})
   @Get('perfil')
   getProfile(@Request() req) {
     return req.user;
