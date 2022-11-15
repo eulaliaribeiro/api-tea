@@ -2,17 +2,24 @@ import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Par
 import { EnderecoService } from './endereco.service';
 import { CreateEnderecoDto } from './dto/create-endereco.dto';
 import { UpdateEnderecoDto } from './dto/update-endereco.dto';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('endereco')
+@ApiTags('Classe-Endereço')
 export class EnderecoController {
   constructor(private readonly enderecoService: EnderecoService) { }
 
   @Get()
+  @ApiOperation({ summary: 'Listar todos os endereços'})
+  @ApiResponse({ status: 200, description: 'Lista de endereço retornada com sucesso!'})
   async findAll() {
     return this.enderecoService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Listar o endereço pelo id'})
+  @ApiResponse({ status: 200, description: 'Dados de um endereço retornado com sucesso!'})
+  @ApiResponse({ status: 404, description: 'Endereço não foi encontrado'})
   async findOneByOrFail(@Param('id') id: number) {
     let endereco;
     try {
@@ -27,16 +34,25 @@ export class EnderecoController {
   }
   
   @Post()
+  @ApiOperation({ summary: 'Cadastrar um novo endereço'})
+  @ApiResponse({ status: 201, description: 'Novo endereço criado com sucesso!'})
+  @ApiResponse({ status: 400, description: 'Parâmetros inválidos'})
   async create(@Body() createEnderecoDto: CreateEnderecoDto) {
     return await this.enderecoService.create(createEnderecoDto);
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Atualizar o endereço do beneficiario pelo id'})
+  @ApiResponse({ status: 200, description: 'Endereço atualizado com sucesso!'})
+  @ApiResponse({ status: 404, description: 'Endereço não encontrado'})
   async update(@Param('id') id: number, @Body() updateEnderecoDto: UpdateEnderecoDto) {
     return await this.enderecoService.update(+id, updateEnderecoDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Deletar endereço do beneficiario pelo id'})
+  @ApiResponse({ status: 204, description: 'Endereço removido com sucesso!'})
+  @ApiResponse({ status: 404, description: 'Endereço não encontrado'})
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: number){
     await this.enderecoService.remove(+id);
