@@ -1,27 +1,28 @@
-import {IsAlpha, IsDate, IsNotEmpty, IsNumber, IsNumberString, IsOptional, IsPositive, IsString, Length, length, max, ValidateNested } from 'class-validator'
-import {Transform, Type} from'class-transformer';
-import { TerapiaSolicitada } from 'src/terapia-solicitada/entities/terapia-solicitada.entity';
+import { ApiProperty } from "@nestjs/swagger";
+import { Transform } from "class-transformer";
+import { IsNotEmpty, IsNumber, IsPositive, IsString, Length } from "class-validator";
 
 export class CreateTerapiaSolicitadaDto {
+    
+    @IsNotEmpty({message:"Nome obrigatório"})
+    @Length(0,60,{message:"Insira um nome entre 0 e 60 caracteres"})
+    @IsString({message:"Deve ser string"})
+    @Transform(({ value }) => value.toUpperCase())
+    @ApiProperty()
+    nome: string;
 
+    @IsNotEmpty({message:"Campo método terapeutico é obrigatório"})
+    @Length(0,60,{message:"Digite o nome do método terapeutico"})
+    @IsString({message:"Deve ser string"})
+    @Transform(({ value }) => value.toUpperCase())
+    @ApiProperty()
+    metodoTerapeutico: string;
 
-@IsNotEmpty({message:"Nome da terapia é obrigatório"})
-@Length(1,100,{message:"O tamanho deve ser 1 e 100"})
-@IsString({message:"Deve ser String"})
-@Transform(({ value }) => value.toUpperCase())
-nome: String;
-
-
-@IsNotEmpty({message:"Nome da metodo é obrigatório"})
-@Length(1,20,{message:"O tamanho deve ser 1 e 20"})
-@IsString({message:"Deve ser String"})
-@Transform(({ value }) => value.toUpperCase())
-metodoTerapeutico: String;
-
-
-@IsNotEmpty({message:"Numero das sessões é obrigatório"})
-@IsPositive()
-qtdsessoes :number
-
+    @IsNotEmpty({message:"Quantidade de sessões"})
+    @IsNumber()
+    @IsPositive({message:"Deve ser uma quantidade maior que 0"})
+    @ApiProperty()
+    qtdSessoes: number;
+  
 
 }

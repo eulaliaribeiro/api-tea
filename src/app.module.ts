@@ -21,7 +21,7 @@ import { Solicitacao } from './solicitacao/entities/solicitacao.entity';
           type: 'postgres',
           database: 'tea_db',
           username: 'postgres',
-          password: 'postgres',
+          password: '1625oaMJ@',
           host: 'localhost',
           port: 5432,
           entities: [Beneficiario, TerapiaSolicitada, Endereco, Solicitacao],
