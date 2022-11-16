@@ -14,19 +14,23 @@ import { EnderecoModule } from './endereco/endereco.module';
 import { TerapiaSolicitada } from './terapia-solicitada/entities/terapia-solicitada.entity';
 import { Endereco } from './endereco/entities/endereco.entity';
 import { Solicitacao } from './solicitacao/entities/solicitacao.entity';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { conectionVariables } from './auth/auth.constants';
+
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-          type: 'postgres',
-          database: 'tea_db',
-          username: 'postgres',
-          password: 'postgres',
-          host: 'localhost',
-          port: 5432,
-          entities: [Beneficiario, TerapiaSolicitada, Endereco, Solicitacao],
-          synchronize: true,
-          logging: true,
+      type: 'postgres',
+      host: conectionVariables.DATABASE_HOST,
+      port: conectionVariables.DATABASE_PORT,
+      username: conectionVariables.DATABASE_USER,
+      password: conectionVariables.DATABASE_PASSWORD,
+      database: conectionVariables.DATABASE_NAME,
+      entities: [Beneficiario, TerapiaSolicitada, Endereco, Solicitacao],
+      synchronize: true,
+      logging: true,
       }),
     BeneficiarioModule,
     GenericModule,
@@ -37,6 +41,10 @@ import { Solicitacao } from './solicitacao/entities/solicitacao.entity';
     EnderecoModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }],
 })
 export class AppModule {}
