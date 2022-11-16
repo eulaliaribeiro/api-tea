@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { EnderecoService } from './endereco.service';
 import { CreateEnderecoDto } from './dto/create-endereco.dto';
 import { UpdateEnderecoDto } from './dto/update-endereco.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { IndexEnderecoSwagger } from 'src/swagger/index-endereco.swagger';
+import { PaginationQueryDto } from 'src/beneficiario/dto/pagination-query.dto';
+
 
 @Controller('endereco')
 @ApiTags('Classe-Endereço')
@@ -14,8 +16,8 @@ export class EnderecoController {
   @ApiOperation({ summary: 'Listar todos os endereços'})
   @ApiResponse({ status: 200, description: 'Lista de endereço retornada com sucesso!', 
   type: IndexEnderecoSwagger})
-  async findAll() {
-    return this.enderecoService.findAll();
+  async findAll(@Query() pagination: PaginationQueryDto) {
+    return this.enderecoService.findAll(pagination);
   }
 
   @Get(':id')

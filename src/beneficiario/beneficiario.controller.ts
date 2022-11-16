@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BadRequestSwagger } from 'src/helpers-swagger/bad-request.swagger';
 import { NotFoundSwagger } from 'src/helpers-swagger/not-found.swagger';
@@ -8,6 +8,7 @@ import { ShowBeneficiarioSwagger } from 'src/swagger/show-beneficiario.swagger';
 import { UpdateBeneficiarioSwagger } from 'src/swagger/update-beneficiario.swagger';
 import { BeneficiarioService } from './beneficiario.service';
 import { CreateBeneficiarioDto } from './dto/create-beneficiario.dto';
+import { PaginationQueryDto } from './dto/pagination-query.dto';
 import { UpdateBeneficiarioDto } from './dto/update-beneficiario.dto';
 
 @Controller('beneficiario')
@@ -18,8 +19,8 @@ export class BeneficiarioController {
   @Get()
   @ApiOperation({ summary: 'Listar de todos os beneficiarios'})
   @ApiResponse({ status: 200, description: 'Lista de beneficiario retornada com sucesso!',type: IndexBeneficiarioSwagger})
-  async findAll() {
-    return this.beneficiarioService.findAll();
+  async findAll(@Query() pagination: PaginationQueryDto) {
+    return this.beneficiarioService.findAll(pagination);
   }
 
   @Get(':id')

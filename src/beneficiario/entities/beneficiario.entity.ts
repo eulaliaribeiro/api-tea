@@ -1,3 +1,4 @@
+import { IsObject } from "class-validator";
 import { Endereco } from "src/endereco/entities/endereco.entity";
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 import { Solicitacao } from "src/solicitacao/entities/solicitacao.entity";
@@ -32,9 +33,10 @@ export class Beneficiario extends AbstractEntity {
   dataEntrada: string;
   
   @OneToOne( () => Endereco, (endereco) => endereco.beneficiario, {cascade: ["insert", "update"]})
-  //@JoinColumn(({ name: "enderecoId" }))
-  @JoinColumn()
+  @IsObject()
   endereco: Endereco
+
+
 
   
   @OneToMany(()=> Solicitacao, (solicitacao) => solicitacao.beneficiario)
