@@ -30,16 +30,15 @@ export class Beneficiario extends AbstractEntity {
   responsavelCarteira: string;
 
   @Column()
-  dataEntrada: string;
+  dataEntrada: Date;
   
   @OneToOne( () => Endereco, (endereco) => endereco.beneficiario, {cascade: ["insert", "update"]})
   @IsObject()
   endereco: Endereco
 
-
-
   
   @OneToMany(()=> Solicitacao, (solicitacao) => solicitacao.beneficiario)
+  @IsObject()
   solicitacoes: Solicitacao[]
   
 }

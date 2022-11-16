@@ -11,7 +11,7 @@ import { CreateBeneficiarioDto } from './dto/create-beneficiario.dto';
 import { PaginationQueryDto } from './dto/pagination-query.dto';
 import { UpdateBeneficiarioDto } from './dto/update-beneficiario.dto';
 
-@Controller('beneficiario')
+@Controller('beneficiarios')
 @ApiTags('Classe-Beneficiario')
 export class BeneficiarioController {
   constructor(private readonly beneficiarioService: BeneficiarioService) { }

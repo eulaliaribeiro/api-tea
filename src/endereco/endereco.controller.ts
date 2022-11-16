@@ -7,7 +7,7 @@ import { IndexEnderecoSwagger } from 'src/swagger/index-endereco.swagger';
 import { PaginationQueryDto } from 'src/beneficiario/dto/pagination-query.dto';
 
 
-@Controller('endereco')
+@Controller('enderecos')
 @ApiTags('Classe-Endereço')
 export class EnderecoController {
   constructor(private readonly enderecoService: EnderecoService) { }

@@ -3,6 +3,8 @@ import { Transform, Type } from 'class-transformer';
 import { Endereco } from "src/endereco/entities/endereco.entity";
 import { ApiProperty } from '@nestjs/swagger';
 import { IndexEnderecoSwagger } from 'src/swagger/index-endereco.swagger';
+import { Solicitacao } from 'src/solicitacao/entities/solicitacao.entity';
+import { IndexSolicitacaoSwagger } from 'src/swagger/index-solicitacao.swagger';
 
 export class CreateBeneficiarioDto {
 
@@ -33,13 +35,12 @@ export class CreateBeneficiarioDto {
     @IsPositive({message:"Deve ser um idade válida"})
     @ApiProperty()
     idade: number;
-    
-    /*@IsDate({message:"Data de entrada inválida"})
-    @IsNotEmpty()
-    @Type(() => Date)*/
-    @IsString({message:"Deve ser String"})
+
+    @IsDate({message:"Data inválida"})
+    @IsNotEmpty({message:"Data da entrada obrigatória"})
+    @Type(()=>Date)
     @ApiProperty()
-    dataEntrada: string;
+    dataEntrada:Date;
 
     @IsNotEmpty({message:"Campo sexo é obrigatório"})
     @Length(8,9,{message:"Digite feminino ou masculino"})
@@ -51,5 +52,9 @@ export class CreateBeneficiarioDto {
     @ValidateNested({message:"Tipo informado errado"})
     @ApiProperty({ type: IndexEnderecoSwagger, isArray: true })
     endereco: Endereco;
+
+    @ValidateNested({message:"Tipo informado errado"})
+    @ApiProperty({ type: IndexSolicitacaoSwagger, isArray: true })
+    solicitacoes: Solicitacao[];
 
 }

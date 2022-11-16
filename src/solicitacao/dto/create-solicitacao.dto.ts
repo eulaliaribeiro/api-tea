@@ -4,18 +4,17 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSolicitacaoDto {
 
-@IsDate({message:"Dados invalida"})
-@IsNotEmpty({message:"Data da solicitacao obrigatória"})
+@IsDate({message:"Data inválida"})
+@IsNotEmpty({message:"Data da solicitação obrigatória"})
 @Type(()=>Date)
 @ApiProperty()
-datasolicitacao:Date;
+dataSolicitacao: Date;
 
 
-@IsNotEmpty({message:"Nome obrigatório"})
+@IsNotEmpty({message:"Médico solicitante obrigatório"})
 @Length(0,60,{message:"O tamanho deve ser 0 e 60"})
 @IsString({message:"Deve ser String"})
 @Transform(({ value }) => value.toUpperCase())
 @ApiProperty()
-medicosolicitante: string;
-
+medicoSolicitante: string;
 }
