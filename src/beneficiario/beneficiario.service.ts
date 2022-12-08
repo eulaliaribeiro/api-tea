@@ -5,17 +5,12 @@ import { CreateBeneficiarioDto } from './dto/create-beneficiario.dto';
 import { UpdateBeneficiarioDto } from './dto/update-beneficiario.dto';
 import { PaginationQueryDto } from './dto/pagination-query.dto';
 import { Beneficiario } from './entities/beneficiario.entity';
-import { Endereco } from 'src/endereco/entities/endereco.entity';
-import { Solicitacao } from 'src/solicitacao/entities/solicitacao.entity';
 
 @Injectable()
 export class BeneficiarioService {
 
   constructor(
-    @InjectRepository(Beneficiario) private beneficiarioRepository: Repository<Beneficiario>,
-    @InjectRepository(Endereco) private enderecoRepository: Repository<Endereco>,
-    @InjectRepository(Solicitacao) private solicitacaoRepository: Repository<Solicitacao>
-    ) {}
+    @InjectRepository(Beneficiario) private beneficiarioRepository: Repository<Beneficiario>    ) {}
 
   async create({beneficiarioCarteira, cid, nome, idade, sexo, responsavelCarteira, dataEntrada, endereco, solicitacoes}: CreateBeneficiarioDto) {
     const registro = this.beneficiarioRepository.save({beneficiarioCarteira, cid, nome, idade, sexo, responsavelCarteira, dataEntrada, endereco, solicitacoes});
@@ -50,7 +45,7 @@ export class BeneficiarioService {
       throw Error(`Beneficiário com ID '${id}' não encontrado`)
     }
 
-    const beneficiario = await this.beneficiarioRepository.create(updateBeneficiarioDto);
+    const beneficiario = this.beneficiarioRepository.create(updateBeneficiarioDto);
 
     await this.beneficiarioRepository.update({id},beneficiario);
     return await this.findOne(id);

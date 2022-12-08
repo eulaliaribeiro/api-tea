@@ -1,7 +1,7 @@
 import { Beneficiario } from 'src/beneficiario/entities/beneficiario.entity';
 import { AbstractEntity } from 'src/generic/entities/abstract-entity';
 
-import { Column, Entity, JoinColumn, OneToOne, Relation } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class Endereco extends AbstractEntity {

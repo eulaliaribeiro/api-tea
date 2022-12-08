@@ -9,7 +9,6 @@ import { UpdateBeneficiarioSwagger } from 'src/swagger/update-beneficiario.swagg
 import { BeneficiarioService } from './beneficiario.service';
 import { CreateBeneficiarioDto } from './dto/create-beneficiario.dto';
 import { PaginationQueryDto } from './dto/pagination-query.dto';
-import { UpdateBeneficiarioDto } from './dto/update-beneficiario.dto';
 
 @Controller('beneficiarios')
 @ApiTags('Classe-Beneficiario')

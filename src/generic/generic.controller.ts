@@ -34,7 +34,7 @@ export class GenericController<TEA extends AbstractEntity> {
   @ApiResponse({ status: 200, description: 'Dado retornado com sucesso!'})
   @ApiResponse({ status: 404, description: 'Dado não foi encontrado', type: IndexTeaSwagger})
   async findOneByOrFail(@Param('id') id: string) {
-    let beneficiario;
+    let beneficiario: TEA;
     try {
       beneficiario = await this.service.findOneByOrFail(id);
     } catch {

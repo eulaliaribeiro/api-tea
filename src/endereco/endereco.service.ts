@@ -1,4 +1,4 @@
-import { Injectable, Query } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Endereco } from './entities/endereco.entity';
@@ -13,7 +13,7 @@ export class EnderecoService {
 
   async create(createEnderecoDto: CreateEnderecoDto) {
     const registro = await this.repository.save(createEnderecoDto);
-    return this.findOne((await registro).id)
+    return this.findOne((registro).id)
   }
   
   async findAll({limit, offset}: PaginationQueryDto) {
@@ -39,7 +39,7 @@ export class EnderecoService {
       throw Error(`Endereco com ID '${id}' não encontrado`)
     }
 
-    const endereco = await this.repository.create(updateEnderecoDto);
+    const endereco = this.repository.create(updateEnderecoDto);
     await this.repository.update({id},endereco);
     return await this.repository.findOneByOrFail({id})
   }
